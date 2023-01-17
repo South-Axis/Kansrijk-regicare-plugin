@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\BadResponseException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Southaxis\RegiCare\Activiteiten;
+use Southaxis\RegiCare\ActivityShow;
 use Southaxis\RegiCare\Auth;
 use function Southaxis\Helpers\mapRegicareFilters;
 use function Southaxis\Helpers\service;
@@ -564,10 +565,14 @@ function regicare_logout(): void
 
 add_filter('init', 'regicare_register_activity');
 
+/**
+ * @throws ContainerExceptionInterface
+ * @throws NotFoundExceptionInterface
+ */
 function regicare_register_activity(): void
 {
     global $wp;
-    global $activity;
+    $activity = service(Activiteiten::class);
 
     $link = home_url($wp->request);
 
