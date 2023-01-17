@@ -1,0 +1,32 @@
+# IDE Projectfiles
+.idea/
+.vscode/
+
+# Dynamic
+.var/cache/phpunit/*
+!.var/cache/phpunit/.gitkeep
+.var/cache/php-cs-fixer/*
+!.var/cache/php-cs-fixer/.gitkeep
+temp/
+tmp/
+dist/
+build/
+.cache/
+**.cache
+
+# Library
+vendor/
+node_modules/
+tools/
+
+# Env
+.env
+auth.json
+.pm.toml
+
+# Other
+*.DS_Store
+.DS_Store
+*.sql
+TODO.md
+
