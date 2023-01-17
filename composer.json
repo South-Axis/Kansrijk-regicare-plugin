@@ -2,8 +2,10 @@
     "name": "southaxis/regicare",
     "description": "RegiCare Link Servicepoint",
     "require": {
+        "graze/guzzle-jsonrpc": "^3.2",
         "guzzlehttp/guzzle": "~6.0",
-        "graze/guzzle-jsonrpc": "^3.2"
+        "php-di/php-di": "^6.4",
+        "ext-mbstring": "*"
     },
     "license": "MIT",
     "authors": [
