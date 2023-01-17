@@ -22,6 +22,7 @@
     ],
     "minimum-stability": "stable",
     "autoload": {
+        "files": ["inc/helpers.php"],
         "psr-4": {
             "Southaxis\\RegiCare\\": "src/"
         }
@@ -31,4 +32,26 @@
             "Southaxis\\RegiCare\\": "tests/"
         }
     },
+    "config": {
+        "platform-check": false,
+        "platform": {
+            "php": "8.1"
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor/roots/wordpress-no-content/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ]
+        }
+    },
+    "scripts": {
+        "phpunit": "tools/phpunit.phar",
+        "php-cs-fixer": "tools/php-cs-fixer",
+        "phpstan": "tools/phpstan",
+        "format": "@php-cs-fixer fix --config=.php-cs-fixer.php",
+        "test": "@phpunit -c phpunit.xml",
+        "analyze": "@phpstan analyze -c phpstan.neon"
+    }
 }
