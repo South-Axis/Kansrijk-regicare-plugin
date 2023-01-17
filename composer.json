@@ -8,6 +8,7 @@
         "ext-mbstring": "*"
     },
     "require-dev": {
+        "illuminate/collections": "^9.47",
         "roave/security-advisories": "dev-latest",
         "roots/wordpress-no-content": "^6.1",
         "symfony/var-dumper": "^6.2",
