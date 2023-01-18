@@ -52,9 +52,7 @@ class ActivityShow
             $children                 = $auth->profielPersoonGekoppeld();
             $childHTML                = '<p>Kies hieronder wie u wilt inschijven voor de activiteit.</p><div class="user-picker">';
             $user->tussenvoegsel      = null === $user->tussenvoegsel ? ' ' : " {$user->tussenvoegsel} ";
-            $childHTML                .= '<div class="row gutter"><input type="checkbox"  class="form-control form-control-checkbox " name="persoonID[]" id="' . @$user->persoonID . '" value="' . @$user->persoonID . '">
 
-                        <label for="' . @$user->persoonID . '">' . $user->roepnaam . $user->tussenvoegsel . $user->achternaam . '</label></div>';
             if (! empty($children)) {
                 foreach ($children as $child) {
                     $child->tussenvoegsel = null === $child->tussenvoegsel ? ' ' : " {$child->tussenvoegsel} ";
