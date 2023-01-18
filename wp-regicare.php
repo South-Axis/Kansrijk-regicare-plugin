@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Plugin Name: RegiCare
  * Description: Adsysco RegiCare API plugin
- * Version: 4.0.4
+ * Version: 4.0.5
  * Author: SouthAxis
  * Author URI: https://www.southaxis.com/
  * Text Domain: sb.
