@@ -246,7 +246,7 @@ class Activiteiten extends RegiCare
      *
      * @param mixed $activiteitID
      */
-    public function registeringOnActivity($activiteitID, mixed $persoonID, array $filter = []): string
+    public function registeringOnActivity($activiteitID, mixed $persoonID, string|array $filter = []): string
     {
         global $wp;
 

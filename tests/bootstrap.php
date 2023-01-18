@@ -31,3 +31,4 @@ require_once ABSPATH . 'wp-includes/functions.php';
 ob_get_clean();
 
 require_once dirname(__DIR__) . '/wp-regicare.php';
+

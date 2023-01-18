@@ -10,9 +10,11 @@ use Psr\Container\NotFoundExceptionInterface;
 use Southaxis\RegiCare\Container\PluginContainer;
 use function array_unique;
 use function collect;
+use function json_decode;
 use function PHPUnit\Framework\assertCount;
 use function PHPUnit\Framework\assertNotEmpty;
 use function Southaxis\Helpers\mapRegicareFilters;
+use function Southaxis\Helpers\service;
 
 /**
  * @internal
@@ -85,5 +87,15 @@ final class ActiviteitenTest extends TestCase
     private function getService(): Activiteiten
     {
         return PluginContainer::getInstance()->get(Activiteiten::class);
+    }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function testAuth(): void
+    {
+        $children = service(Auth::class)->profielPersoonGekoppeld();
+        dd($children);
     }
 }

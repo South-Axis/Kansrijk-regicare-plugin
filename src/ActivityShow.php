@@ -52,13 +52,13 @@ class ActivityShow
             $children                 = $auth->profielPersoonGekoppeld();
             $childHTML                = '<p>Kies hieronder wie u wilt inschijven voor de activiteit.</p><div class="user-picker">';
             $user->tussenvoegsel      = null === $user->tussenvoegsel ? ' ' : " {$user->tussenvoegsel} ";
-            $childHTML .= '<div class="row gutter"><input type="checkbox"  class="form-control form-control-checkbox " name="persoonID[]" id="' . @$user->persoonID . '" value="' . @$user->persoonID . '">
+            $childHTML                .= '<div class="row gutter"><input type="checkbox"  class="form-control form-control-checkbox " name="persoonID[]" id="' . @$user->persoonID . '" value="' . @$user->persoonID . '">
 
                         <label for="' . @$user->persoonID . '">' . $user->roepnaam . $user->tussenvoegsel . $user->achternaam . '</label></div>';
             if (! empty($children)) {
                 foreach ($children as $child) {
                     $child->tussenvoegsel = null === $child->tussenvoegsel ? ' ' : " {$child->tussenvoegsel} ";
-                    $childHTML .= '<div class="row gutter"><input type="checkbox"  class="form-control form-control-checkbox " name="persoonID[]" id="' . $child->persoonID . '" value="' . $child->persoonID . '">
+                    $childHTML            .= '<div class="row gutter"><input type="checkbox"  class="form-control form-control-checkbox " name="persoonID[]" id="' . $child->persoonID . '" value="' . $child->persoonID . '">
 
                         <label for="' . $child->persoonID . '">' . $child->roepnaam . $child->tussenvoegsel . $child->achternaam . '</label></div>';
                 }
@@ -99,101 +99,101 @@ class ActivityShow
                     <p>
                         <b>Wanneer</b><br>
                         <?php echo $this->get_first_regi_data($act->interval)['value'] . ', ' . $this->get_first_regi_data($act->dag)['value'] . ' ' . date('d F', strtotime($act->startDatum)) . '<b> T/M </b> ' . date('d F', strtotime($act->eindDatum)); ?>
-                        </p>
+                    </p>
                     <p>
                         <b>Locatie</b><br>
                         <?php echo $this->get_first_regi_data($act->locatie)['value']; ?>
-                        </p>
+                    </p>
                     <p>
                         <b>Kosten</b><br>
                         €
                         <?php echo $act->prijs ?? 0; ?>
-                        </p>
+                    </p>
                     <p>
                         <b>Doelgroep</b><br>
                         <?php
-                            if (null !== $act->groepering) {
-                                $data = [];
+                        if (null !== $act->groepering) {
+                            $data = [];
 
-                                foreach ($act->groepering as $key => $value) {
-                                    $grouping = explode(' jaar ', $value);
+                            foreach ($act->groepering as $key => $value) {
+                                $grouping = explode(' jaar ', $value);
 
-                                    if (count($grouping) > 1) {
-                                        [$a, $b] = $grouping;
-                                        $data[]  = $b;
-                                    } else {
-                                        $data[] = $grouping[0];
-                                    }
+                                if (count($grouping) > 1) {
+                                    [$a, $b] = $grouping;
+                                    $data[] = $b;
+                                } else {
+                                    $data[] = $grouping[0];
                                 }
-                                echo implode(', ', $data);
                             }
-        ?>
-                        </p>
-                        <p>
-                            <b>Interesse</b><br>
-                            <?php
-        if (null != $act->activiteittype) {
-            echo implode(', ', array_values(get_object_vars($act->activiteittype)));
-        }
-        ?>
-                        </p>
-                        <p>
-                            <b>Vrije plekken</b><br>
-                            <?php
-        $num   = $act->inschrijvingenMaximum - $act->inschrijvingen;
-        $place = $act->inschrijvingenMaximum - $act->inschrijvingen;
-        if (null != $act->inschrijvingen) {
-            echo $num;
-        } else {
-            echo $place;
-        }
-        ?>
-                        </p>
-                    </div>
-                </div>
-                <div class="col col-md-4 col-reg-activity">
-                    <div class="rightMetaHolder">
-                        <h3 class="sb-color-orange sb-text-center">Aanmeldformulier</h3>
-                        <p>U staat op het punt om u aan te melden voor de activiteit <?php echo $act->omschrijving; ?>.
-                           De kosten hiervoor zullen €
-                            <?php
-        if (null != $act->prijs) {
-            echo $act->prijs;
-        } else {
-            echo 0;
-        }
-        ?>
-                           bedragen. Kansrijk Edam-Volendam gaat zorgvuldig om met uw persoonlijke gegevens en zal deze
-                           niet delen met derden.</p>
-                        <br>
-                        <br>
-                        <p>Door op inschrijven te klikken gaat u akkoord met de
-                            <a class="sb-color-orange" href="<?php echo home_url($wp); ?>/algemene-voorwaarden/">algemene
-                                                                                                                 voorwaarden
-                                                                                                                 en
-                                                                                                                 inschrijfregels.</a>
-                        </p>
-                        <form method="post" enctype="multipart/form-data" id="registerActivityForm">
-                            <?php if (null != @$_SESSION['user']['loginKey']) {
-                                echo $childHTML;
-                            }
-        ?>
-                            <input type="text" name="loginKey" class="form-control" id="loginKey" value="<?php echo $_SESSION['user']['loginKey'] ?? ''; ?>" aria-describedby="loginKey" style="display: none;">
-                            <input type="text" name="activityID" class="form-control" id="activityID" value="<?php echo $activityID; ?>" aria-describedby="activityID" style="display: none;">
-                            <button type="submit" class="btn btn-orange sb-align-bottom">
-                                <?php if (1 == $act->inschrijven && 0 != $act->inschrijvingenMaximum - $act->inschrijvingen) {
-                                    ?>
-                                    Inschrijven
-                                <?php } else {
-                                    ?>
-                                    Meld u aan voor de wachtlijst
-                                    <?php
-                                } ?>
-                            </button>
-                        </form>
-                    </div>
+                            echo implode(', ', $data);
+                        }
+                        ?>
+                    </p>
+                    <p>
+                        <b>Interesse</b><br>
+                        <?php
+                        if (null != $act->activiteittype) {
+                            echo implode(', ', array_values(get_object_vars($act->activiteittype)));
+                        }
+                        ?>
+                    </p>
+                    <p>
+                        <b>Vrije plekken</b><br>
+                        <?php
+                        $num   = $act->inschrijvingenMaximum - $act->inschrijvingen;
+                        $place = $act->inschrijvingenMaximum - $act->inschrijvingen;
+                        if (null != $act->inschrijvingen) {
+                            echo $num;
+                        } else {
+                            echo $place;
+                        }
+                        ?>
+                    </p>
                 </div>
             </div>
+            <div class="col col-md-4 col-reg-activity">
+                <div class="rightMetaHolder">
+                    <h3 class="sb-color-orange sb-text-center">Aanmeldformulier</h3>
+                    <p>U staat op het punt om u aan te melden voor de activiteit <?php echo $act->omschrijving; ?>.
+                       De kosten hiervoor zullen €
+                        <?php
+                        if (null != $act->prijs) {
+                            echo $act->prijs;
+                        } else {
+                            echo 0;
+                        }
+                        ?>
+                       bedragen. Kansrijk Edam-Volendam gaat zorgvuldig om met uw persoonlijke gegevens en zal deze
+                       niet delen met derden.</p>
+                    <br>
+                    <br>
+                    <p>Door op inschrijven te klikken gaat u akkoord met de
+                        <a class="sb-color-orange" href="<?php echo home_url($wp); ?>/algemene-voorwaarden/">algemene
+                                                                                                             voorwaarden
+                                                                                                             en
+                                                                                                             inschrijfregels.</a>
+                    </p>
+                    <form method="post" enctype="multipart/form-data" id="registerActivityForm">
+                        <?php if (null != @$_SESSION['user']['loginKey']) {
+                            echo $childHTML;
+                        }
+                        ?>
+                        <input type="text" name="loginKey" class="form-control" id="loginKey" value="<?php echo $_SESSION['user']['loginKey'] ?? ''; ?>" aria-describedby="loginKey" style="display: none;">
+                        <input type="text" name="activityID" class="form-control" id="activityID" value="<?php echo $activityID; ?>" aria-describedby="activityID" style="display: none;">
+                        <button type="submit" class="btn btn-orange sb-align-bottom">
+                            <?php if (1 == $act->inschrijven && 0 != $act->inschrijvingenMaximum - $act->inschrijvingen) {
+                                ?>
+                                Inschrijven
+                            <?php } else {
+                                ?>
+                                Meld u aan voor de wachtlijst
+                                <?php
+                            } ?>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <?php
         return ob_get_clean();
@@ -299,7 +299,7 @@ class ActivityShow
         </div>
 
         <?php if (null != $everything) {
-            ?>
+        ?>
         <div class='SB-activities-overview mt-3'>
             <div class='container mt-5 displayActivities' id='all'>
                 <div class='row' id="filterResult" style="width: 100%">
@@ -324,7 +324,7 @@ class ActivityShow
                                                             <td>
                                                                 <?php
                                                                 echo $activity->trefwoorden;
-                                                        ?>
+                                                                ?>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
@@ -400,11 +400,11 @@ class ActivityShow
                                                                 echo 'Maximum Inschrijvingen: ' . $activity->inschrijvingenMaximum . '<br>';
                                                             }
                                                             $num = $activity->inschrijvingenMaximum - $activity->inschrijvingen;
-                        if (is_int($num)) {
-                            echo 'Aantal vrije plekken: ' . $num;
-                        } else {
-                            echo 'Aantal vrije plekken: 0';
-                        } ?>
+                                                            if (is_int($num)) {
+                                                                echo 'Aantal vrije plekken: ' . $num;
+                                                            } else {
+                                                                echo 'Aantal vrije plekken: 0';
+                                                            } ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -414,11 +414,11 @@ class ActivityShow
                                                         <td>
                                                             €
                                                             <?php
-                        if (null != $activity->prijs) {
-                            echo $activity->prijs;
-                        } else {
-                            echo 0;
-                        } ?>
+                                                            if (null != $activity->prijs) {
+                                                                echo $activity->prijs;
+                                                            } else {
+                                                                echo 0;
+                                                            } ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -427,14 +427,14 @@ class ActivityShow
                                                         </td>
                                                         <td>
                                                             <?php
-                        if (null != $activity->groepering) {
-                            $data = [];
-                            foreach ($activity->groepering as $key => $value) {
-                                [$a, $b] = explode(' jaar ', $value);
-                                $data[]  = $b;
-                            }
-                            echo implode(', ', $data);
-                        } ?>
+                                                            if (null != $activity->groepering) {
+                                                                $data = [];
+                                                                foreach ($activity->groepering as $key => $value) {
+                                                                    [$a, $b] = explode(' jaar ', $value);
+                                                                    $data[] = $b;
+                                                                }
+                                                                echo implode(', ', $data);
+                                                            } ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -443,10 +443,10 @@ class ActivityShow
                                                         </td>
                                                         <td>
                                                             <?php
-                        if (null != $activity->activiteittype) {
-                            echo implode(', ', array_values(get_object_vars($activity->activiteittype)));
-                        }
-                        ?>
+                                                            if (null != $activity->activiteittype) {
+                                                                echo implode(', ', array_values(get_object_vars($activity->activiteittype)));
+                                                            }
+                                                            ?>
                                                         </td>
                                                     </tr>
                                                     </tbody>
@@ -466,9 +466,9 @@ class ActivityShow
             </div>
         </div>
         <?php
-        } else {
-            echo $nothing;
-        }
+    } else {
+        echo $nothing;
+    }
 
         return ob_get_clean();
     }
