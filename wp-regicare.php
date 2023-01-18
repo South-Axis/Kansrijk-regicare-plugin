@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Plugin Name: RegiCare
  * Description: Adsysco RegiCare API plugin
- * Version: 4.0.0
+ * Version: 4.0.4
  * Author: SouthAxis
  * Author URI: https://www.southaxis.com/
  * Text Domain: sb.
@@ -35,8 +35,7 @@ add_action('init', function (): void {
     PluginContainer::getInstance();
 });
 
-function enqueue_custom_stylesheets(): void
-{
+add_action('wp_enqueue_scripts', function (): void {
     $directory = REGICARE_PLUGIN_URL;
 
     wp_enqueue_script('jquery-ui-core');
@@ -44,19 +43,20 @@ function enqueue_custom_stylesheets(): void
 
     wp_enqueue_style('mytheme-custom', $directory . '/assets/css/regicare.css');
     wp_enqueue_script('mytheme-jquery-script', 'https://code.jquery.com/jquery-3.4.1.min.js', null, true);
-    wp_enqueue_script('mytheme-script', $directory . '/assets/js/custom/script.js', ['jquery-ui-core', 'jquery-ui-datepicker'], true, true);
+    wp_enqueue_script('mytheme-script', $directory . '/assets/js/custom/script.js', [
+        'jquery-ui-core',
+        'jquery-ui-datepicker',
+    ], true, true);
     wp_localize_script('mytheme-script', 'plugin', ['ajax_url' => admin_url('admin-ajax.php')]);
-}
-
-add_action('wp_enqueue_scripts', 'enqueue_custom_stylesheets', 11);
+}, 11);
 
 /**
  * Adds account navigation item to the navigation.
  *
  * @param mixed $items
  */
-function display_loggedin_username($items): string
-{
+
+add_filter('wp_nav_menu_main-menu_items', function ($items): string {
     global $wp;
 
     $link     = home_url($wp->request);
@@ -79,6 +79,4 @@ function display_loggedin_username($items): string
     }
 
     return $items;
-}
-
-add_filter('wp_nav_menu_main-menu_items', 'display_loggedin_username', 20, 1);
+}, 20, 1);
