@@ -43,10 +43,8 @@ add_action('wp_enqueue_scripts', function (): void {
 
     wp_enqueue_style('mytheme-custom', $directory . '/assets/css/regicare.css');
     wp_enqueue_script('mytheme-jquery-script', 'https://code.jquery.com/jquery-3.4.1.min.js', null, true);
-    wp_enqueue_script('mytheme-script', $directory . '/assets/js/custom/script.js', [
-        'jquery-ui-core',
-        'jquery-ui-datepicker',
-    ], true, true);
+
+    wp_enqueue_script('mytheme-script', $directory . '/assets/js/custom/script.js', ['jquery-ui-core', 'jquery-ui-datepicker'], true, true);
     wp_localize_script('mytheme-script', 'plugin', ['ajax_url' => admin_url('admin-ajax.php')]);
 }, 11);
 
@@ -55,7 +53,6 @@ add_action('wp_enqueue_scripts', function (): void {
  *
  * @param mixed $items
  */
-
 add_filter('wp_nav_menu_main-menu_items', function ($items): string {
     global $wp;
 
@@ -80,3 +77,4 @@ add_filter('wp_nav_menu_main-menu_items', function ($items): string {
 
     return $items;
 }, 20, 1);
+

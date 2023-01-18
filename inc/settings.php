@@ -61,7 +61,7 @@ function showFilterActivities(): void
         $activities = $activity->getAllActivities(mapRegicareFilters($_POST));
     } catch (BadResponseException $e) {
         /** @noinspection ForgottenDebugOutputInspection */
-        \error_log($e->getMessage());
+        error_log($e->getMessage());
     }
 
     if (empty($activities)) {
@@ -572,32 +572,38 @@ add_filter('init', 'regicare_register_activity');
 function regicare_register_activity(): void
 {
     global $wp;
+
     $activity = service(Activiteiten::class);
 
     $link = home_url($wp->request);
 
-    if (isset($_POST['activityID'])) {
-        if (null == $_POST['loginKey']) {
-            $oldLink                  = home_url($wp) . $_SERVER['REQUEST_URI'];
-            $_SESSION['redirect_url'] = $oldLink;
-            wp_redirect(home_url($wp) . '/login');
+    if (! isset($_POST['activityID'])) {
+        return;
+    }
 
-            exit();
-        }
+    if (empty($_POST['loginKey'])) {
+        $oldLink                  = home_url() . $_SERVER['REQUEST_URI'];
+        $_SESSION['redirect_url'] = $oldLink;
 
-        if (isset($_POST['persoonID'])) {
-            foreach ($_POST['persoonID'] as $persoonID) {
-                $persoonID = (int)$persoonID;
-                $register  = $activity->registeringOnActivity($_POST['activityID'], $persoonID, $_POST['loginKey']);
-            }
-            wp_redirect(home_url($wp) . '/bedankt');
-
-            exit();
-        }
-        wp_redirect("{$link}/inschrijven/?activityID=" . $_POST['activityID'] . '&error=NOCHILD');
+        wp_redirect(site_url('/login'));
 
         exit();
     }
+
+    if (isset($_POST['persoonID'])) {
+        foreach ($_POST['persoonID'] as $persoonID) {
+            $persoonID = (int)$persoonID;
+            $activity->registeringOnActivity($_POST['activityID'], $persoonID, $_POST['loginKey']);
+        }
+
+        wp_redirect(site_url('/bedankt'));
+
+        exit();
+    }
+
+    wp_redirect(site_url() . '/inschrijven/?activityID=' . $_POST['activityID'] . '&error=NOCHILD');
+
+    exit();
 }
 
 add_filter('init', 'regicare_register');
