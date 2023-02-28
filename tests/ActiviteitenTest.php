@@ -17,9 +17,9 @@ use function Southaxis\Helpers\mapRegicareFilters;
 use function Southaxis\Helpers\service;
 
 /**
- * @internal
+ * @covers \Southaxis\RegiCare\Activiteiten
  *
- * @coversNothing
+ * @internal
  */
 final class ActiviteitenTest extends TestCase
 {
