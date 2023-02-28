@@ -50,19 +50,6 @@ class PluginContainer implements ContainerInterface
 
     private function getDefinitions(): array
     {
-        return [
-            'token'               => static function () {
-                return get_option('regicare_key', '');
-            },
-            'domain'              => static function () {
-                return get_option('regicare_domain', '');
-            },
-            ActivityShow::class   => static fn () => new ActivityShow(),
-            Authentication::class => static fn () => new Authentication(),
-            Config::class         => static fn (ContainerInterface $c) => new Config($c->get('domain'), $c->get('token')),
-            Vacatures::class      => static fn (ContainerInterface $c) => new Vacatures($c->get(Config::class)),
-            Activiteiten::class   => static fn (ContainerInterface $c) => new Activiteiten($c->get(Config::class)),
-            Auth::class           => static fn (ContainerInterface $c) => new Auth($c->get(Config::class)),
-        ];
+        return (static fn () => include \dirname(__FILE__, 3) . '/config.php')();
     }
 }
