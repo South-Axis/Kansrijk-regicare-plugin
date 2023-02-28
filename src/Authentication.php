@@ -41,8 +41,8 @@ class Authentication
             </button>
         </form>
         <p class="float-right mt-3">
-            Hebt u nog geen account <a href="<?php echo $link; ?>/registreren">registreer</a> hier of ga naar
-            <a href="<?php echo $link; ?>/wachtwoord-vergeten">wachtwoord vergeten</a>.
+            Hebt u nog geen account <a href="<?= $link ?>/registreren">registreer</a> hier of ga naar
+            <a href="<?= $link ?>/wachtwoord-vergeten">wachtwoord vergeten</a>.
         </p>
         <?php
         return ob_get_clean();
@@ -103,93 +103,93 @@ class Authentication
         <form method="post" enctype="multipart/form-data" id="registerForm">
             <div class="form-group">
                 <label class="requiredField" for="regicare_roepnaam">Roepnaam</label>
-                <input type="text" name="regicare_roepnaam" class="form-control <?php echo isset($error['regicare_roepnaam'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['regicare_roepnaam'][0]) ? 'value="' . $error['regicare_roepnaam'][0] . '"' : null; ?> id="regicare_roepnaam" aria-describedby="roepnaam" placeholder="Roepnaam" required>
+                <input type="text" name="regicare_roepnaam" class="form-control <?= isset($error['regicare_roepnaam'][1]) ? 'border-danger' : null ?>" <?= isset($error['regicare_roepnaam'][0]) ? 'value="' . $error['regicare_roepnaam'][0] . '"' : null ?> id="regicare_roepnaam" aria-describedby="roepnaam" placeholder="Roepnaam" required>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="voorletters">Voorletters</label>
-                <input type="text" name="voorletters" class="form-control <?php echo isset($error['voorletters'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['voorletters'][0]) ? 'value="' . $error['voorletters'][0] . '"' : null; ?> id="voorletters" aria-describedby="voorletters" placeholder="Voorletters" required>
+                <input type="text" name="voorletters" class="form-control <?= isset($error['voorletters'][1]) ? 'border-danger' : null ?>" <?= isset($error['voorletters'][0]) ? 'value="' . $error['voorletters'][0] . '"' : null ?> id="voorletters" aria-describedby="voorletters" placeholder="Voorletters" required>
             </div>
             <div class="form-group">
                 <label for="tussenvoegsel">Tussenvoegsel</label>
-                <input type="text" name="tussenvoegsel" class="form-control <?php echo isset($error['tussenvoegsel'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['tussenvoegsel'][0]) ? 'value="' . $error['tussenvoegsel'][0] . '"' : null; ?> id="tussenvoegsel" aria-describedby="tussenvoegsel" placeholder="Tussenvoegsel">
+                <input type="text" name="tussenvoegsel" class="form-control <?= isset($error['tussenvoegsel'][1]) ? 'border-danger' : null ?>" <?= isset($error['tussenvoegsel'][0]) ? 'value="' . $error['tussenvoegsel'][0] . '"' : null ?> id="tussenvoegsel" aria-describedby="tussenvoegsel" placeholder="Tussenvoegsel">
             </div>
             <div class="form-group">
                 <label class="requiredField" for="achternaam">Achternaam</label>
-                <input type="text" name="achternaam" class="form-control <?php echo isset($error['achternaam'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['achternaam'][0]) ? 'value="' . $error['achternaam'][0] . '"' : null; ?> id="achternaam" aria-describedby="achternaam" placeholder="Achternaam" required>
+                <input type="text" name="achternaam" class="form-control <?= isset($error['achternaam'][1]) ? 'border-danger' : null ?>" <?= isset($error['achternaam'][0]) ? 'value="' . $error['achternaam'][0] . '"' : null ?> id="achternaam" aria-describedby="achternaam" placeholder="Achternaam" required>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="geslacht">Geslacht</label>
-                <select class='form-control <?php echo isset($error['geslacht'][1]) ? 'border-danger' : null; ?>' id='geslacht' name='geslacht' required>
-                    <option <?php echo isset($error['geslacht'][0]) && '1' === $error['geslacht'][0] ? 'selected' : null; ?> value='1'>
+                <select class='form-control <?= isset($error['geslacht'][1]) ? 'border-danger' : null ?>' id='geslacht' name='geslacht' required>
+                    <option <?= isset($error['geslacht'][0]) && '1' === $error['geslacht'][0] ? 'selected' : null ?> value='1'>
                         Man
                     </option>
-                    <option <?php echo isset($error['geslacht'][0]) && '2' === $error['geslacht'][0] ? 'selected' : null; ?> value='2'>
+                    <option <?= isset($error['geslacht'][0]) && '2' === $error['geslacht'][0] ? 'selected' : null ?> value='2'>
                         Vrouw
                     </option>
                 </select>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="geboortedatum">Geboortedatum</label>
-                <input type="date" name="geboortedatum" class="form-control <?php echo isset($error['geboortedatum'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['geboortedatum'][0]) ? 'value="' . $error['geboortedatum'][0] . '"' : null; ?> id="geboortedatum" aria-describedby="geboortedatum" placeholder="Geboortedatum" required>
+                <input type="date" name="geboortedatum" class="form-control <?= isset($error['geboortedatum'][1]) ? 'border-danger' : null ?>" <?= isset($error['geboortedatum'][0]) ? 'value="' . $error['geboortedatum'][0] . '"' : null ?> id="geboortedatum" aria-describedby="geboortedatum" placeholder="Geboortedatum" required>
             </div>
             <div>
                 <div class="form-group">
                     <label class="requiredField" for="postcode">Postcode</label>
-                    <input type="text" name="postcode" id="zipcode" class="form-control <?php echo isset($error['postcode'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['postcode'][0]) ? 'value="' . $error['postcode'][0] . '"' : null; ?> id="postcode" aria-describedby="postcode" placeholder="Postcode" required>
+                    <input type="text" name="postcode" id="zipcode" class="form-control <?= isset($error['postcode'][1]) ? 'border-danger' : null ?>" <?= isset($error['postcode'][0]) ? 'value="' . $error['postcode'][0] . '"' : null ?> id="postcode" aria-describedby="postcode" placeholder="Postcode" required>
                 </div>
                 <div class="form-group">
                     <label class="requiredField" for="nummer">Huisnummer</label>
-                    <input type="text" name="nummer" id="housenumber" class="form-control <?php echo isset($error['nummer'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['nummer'][0]) ? 'value="' . $error['nummer'][0] . '"' : null; ?> id="nummer" aria-describedby="nummer" placeholder="Huisnummer" required>
+                    <input type="text" name="nummer" id="housenumber" class="form-control <?= isset($error['nummer'][1]) ? 'border-danger' : null ?>" <?= isset($error['nummer'][0]) ? 'value="' . $error['nummer'][0] . '"' : null ?> id="nummer" aria-describedby="nummer" placeholder="Huisnummer" required>
                 </div>
                 <div class="form-group">
                     <label for="toevoeging">Toevoeging</label>
-                    <input type="text" name="toevoeging" class="form-control <?php echo isset($error['toevoeging'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['toevoeging'][0]) ? 'value="' . $error['toevoeging'][0] . '"' : null; ?> id="toevoeging" aria-describedby="toevoeging" placeholder="Toevoeging">
+                    <input type="text" name="toevoeging" class="form-control <?= isset($error['toevoeging'][1]) ? 'border-danger' : null ?>" <?= isset($error['toevoeging'][0]) ? 'value="' . $error['toevoeging'][0] . '"' : null ?> id="toevoeging" aria-describedby="toevoeging" placeholder="Toevoeging">
                 </div>
                 <div class="form-group">
                     <label class="requiredField" for="straat">Straat</label>
-                    <input type="text" name="straat" id="street" class="form-control <?php echo isset($error['straat'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['straat'][0]) ? 'value="' . $error['straat'][0] . '"' : null; ?> id="straat" aria-describedby="straat" placeholder="Straatnaam" required disabled>
+                    <input type="text" name="straat" id="street" class="form-control <?= isset($error['straat'][1]) ? 'border-danger' : null ?>" <?= isset($error['straat'][0]) ? 'value="' . $error['straat'][0] . '"' : null ?> id="straat" aria-describedby="straat" placeholder="Straatnaam" required disabled>
                 </div>
                 <div class="form-group">
                     <label class="requiredField" for="plaats">Plaats</label>
-                    <input type="text" name="plaats" id="place" class="form-control <?php echo isset($error['plaats'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['plaats'][0]) ? 'value="' . $error['plaats'][0] . '"' : null; ?> id="plaats" aria-describedby="plaats" placeholder="Plaats" required disabled>
+                    <input type="text" name="plaats" id="place" class="form-control <?= isset($error['plaats'][1]) ? 'border-danger' : null ?>" <?= isset($error['plaats'][0]) ? 'value="' . $error['plaats'][0] . '"' : null ?> id="plaats" aria-describedby="plaats" placeholder="Plaats" required disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label for="telefoonVast">Telefoon (Vast)</label>
-                <input type="text" name="telefoonVast" class="form-control <?php echo isset($error['telefoonVast'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['telefoonVast'][0]) ? 'value="' . $error['telefoonVast'][0] . '"' : null; ?> id="telefoonVast" aria-describedby="telefoon" placeholder="Telefoonnummer">
+                <input type="text" name="telefoonVast" class="form-control <?= isset($error['telefoonVast'][1]) ? 'border-danger' : null ?>" <?= isset($error['telefoonVast'][0]) ? 'value="' . $error['telefoonVast'][0] . '"' : null ?> id="telefoonVast" aria-describedby="telefoon" placeholder="Telefoonnummer">
             </div>
             <div class="form-group">
                 <label for="telefoonMobiel">Telefoon (Mobiel)</label>
-                <input type="text" name="telefoonMobiel" class="form-control <?php echo isset($error['telefoonMobiel'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['telefoonMobiel'][0]) ? 'value="' . $error['telefoonMobiel'][0] . '"' : null; ?> id="telefoonMobiel" aria-describedby="telefoon" placeholder="Telefoonnummer">
+                <input type="text" name="telefoonMobiel" class="form-control <?= isset($error['telefoonMobiel'][1]) ? 'border-danger' : null ?>" <?= isset($error['telefoonMobiel'][0]) ? 'value="' . $error['telefoonMobiel'][0] . '"' : null ?> id="telefoonMobiel" aria-describedby="telefoon" placeholder="Telefoonnummer">
             </div>
             <div class="form-group">
                 <label for="iban">IBAN-Rekeningnummer</label>
-                <input type="text" name="iban" class="form-control <?php echo isset($error['iban'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['iban'][0]) ? 'value="' . $error['iban'][0] . '"' : null; ?> id="iban" aria-describedby="iban" placeholder="IBAN-Rekeningnummer">
+                <input type="text" name="iban" class="form-control <?= isset($error['iban'][1]) ? 'border-danger' : null ?>" <?= isset($error['iban'][0]) ? 'value="' . $error['iban'][0] . '"' : null ?> id="iban" aria-describedby="iban" placeholder="IBAN-Rekeningnummer">
             </div>
             <div class="form-group form-check">
                 <label for="autoincasso">Auto incasso</label>
-                <select class='form-control <?php echo isset($error['autoincasso'][1]) ? 'border-danger' : null; ?>' id='autoincasso' name='autoincasso' aria-describedby="auto incasso">
-                    <option <?php echo isset($error['autoincasso'][0]) && '1' === $error['autoincasso'][0] ? 'selected' : null; ?> value='1'>
+                <select class='form-control <?= isset($error['autoincasso'][1]) ? 'border-danger' : null ?>' id='autoincasso' name='autoincasso' aria-describedby="auto incasso">
+                    <option <?= isset($error['autoincasso'][0]) && '1' === $error['autoincasso'][0] ? 'selected' : null ?> value='1'>
                         Ja
                     </option>
-                    <option <?php echo isset($error['autoincasso'][0]) && '0' === $error['autoincasso'][0] ? 'selected' : null; ?> value='0'>
+                    <option <?= isset($error['autoincasso'][0]) && '0' === $error['autoincasso'][0] ? 'selected' : null ?> value='0'>
                         Nee
                     </option>
                 </select>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="emailadres">E-mailadres</label>
-                <input type="email" name="emailadres" class="form-control <?php echo isset($error['emailadres'][1]) || 'GEBRUIKERSACCOUNT_BEZET' === $error['code'] ? 'border-danger' : null; ?>" <?php echo isset($error['emailadres'][0]) ? 'value="' . $error['emailadres'][0] . '"' : null; ?> id="emailadres" aria-describedby="emailadres" placeholder="Emailadres" required>
+                <input type="email" name="emailadres" class="form-control <?= isset($error['emailadres'][1]) || 'GEBRUIKERSACCOUNT_BEZET' === $error['code'] ? 'border-danger' : null ?>" <?= isset($error['emailadres'][0]) ? 'value="' . $error['emailadres'][0] . '"' : null ?> id="emailadres" aria-describedby="emailadres" placeholder="Emailadres" required>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="wachtwoord">Wachtwoord</label>
-                <input type="password" name="wachtwoord" class="form-control <?php echo isset($error['wachtwoord'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['wachtwoord'][0]) ? 'value="' . $error['wachtwoord'][0] . '"' : null; ?> id="wachtwoord" aria-describedby="wachtwoord" placeholder="Wachtwoord" required>
+                <input type="password" name="wachtwoord" class="form-control <?= isset($error['wachtwoord'][1]) ? 'border-danger' : null ?>" <?= isset($error['wachtwoord'][0]) ? 'value="' . $error['wachtwoord'][0] . '"' : null ?> id="wachtwoord" aria-describedby="wachtwoord" placeholder="Wachtwoord" required>
             </div>
             <button type="submit" class="sb-filter-button btn-orange sb-filter-button-text float-right sb-registerButton">
                 Registreer
             </button>
         </form>
-        <p class="float-right mt-3"> Hebt u al een account log dan hier in, <a href="<?php echo $baseUrl . '/login'; ?>">inloggen</a>
+        <p class="float-right mt-3"> Hebt u al een account log dan hier in, <a href="<?= $baseUrl . '/login' ?>">inloggen</a>
                                      hier. </p>
         <?php
         return ob_get_clean();
@@ -221,54 +221,54 @@ class Authentication
             <input type="text" name="form" value="childRegister" hidden>
             <div class="form-group">
                 <label class="requiredField" for="regicare_roepnaam">Roepnaam</label>
-                <input type="text" name="regicare_roepnaam" class="form-control <?php echo isset($error['regicare_roepnaam'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['regicare_roepnaam'][0]) ? 'value="' . $error['regicare_roepnaam'][0] . '"' : null; ?> id="regicare_roepnaam" aria-describedby="roepnaam" placeholder="Roepnaam" required>
+                <input type="text" name="regicare_roepnaam" class="form-control <?= isset($error['regicare_roepnaam'][1]) ? 'border-danger' : null ?>" <?= isset($error['regicare_roepnaam'][0]) ? 'value="' . $error['regicare_roepnaam'][0] . '"' : null ?> id="regicare_roepnaam" aria-describedby="roepnaam" placeholder="Roepnaam" required>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="voorletters">Voorletters</label>
-                <input type="text" name="voorletters" class="form-control <?php echo isset($error['voorletters'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['voorletters'][0]) ? 'value="' . $error['voorletters'][0] . '"' : null; ?> id="voorletters" aria-describedby="voorletters" placeholder="Voorletters" required>
+                <input type="text" name="voorletters" class="form-control <?= isset($error['voorletters'][1]) ? 'border-danger' : null ?>" <?= isset($error['voorletters'][0]) ? 'value="' . $error['voorletters'][0] . '"' : null ?> id="voorletters" aria-describedby="voorletters" placeholder="Voorletters" required>
             </div>
             <div class="form-group">
                 <label for="tussenvoegsel">Tussenvoegsel</label>
-                <input type="text" name="tussenvoegsel" class="form-control <?php echo isset($error['tussenvoegsel'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['tussenvoegsel'][0]) ? 'value="' . $error['tussenvoegsel'][0] . '"' : null; ?> id="tussenvoegsel" aria-describedby="tussenvoegsel" placeholder="Tussenvoegsel">
+                <input type="text" name="tussenvoegsel" class="form-control <?= isset($error['tussenvoegsel'][1]) ? 'border-danger' : null ?>" <?= isset($error['tussenvoegsel'][0]) ? 'value="' . $error['tussenvoegsel'][0] . '"' : null ?> id="tussenvoegsel" aria-describedby="tussenvoegsel" placeholder="Tussenvoegsel">
             </div>
             <div class="form-group">
                 <label class="requiredField" for="achternaam">Achternaam</label>
-                <input type="text" name="achternaam" class="form-control <?php echo isset($error['achternaam'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['achternaam'][0]) ? 'value="' . $error['achternaam'][0] . '"' : null; ?> id="achternaam" aria-describedby="achternaam" placeholder="Achternaam" required>
+                <input type="text" name="achternaam" class="form-control <?= isset($error['achternaam'][1]) ? 'border-danger' : null ?>" <?= isset($error['achternaam'][0]) ? 'value="' . $error['achternaam'][0] . '"' : null ?> id="achternaam" aria-describedby="achternaam" placeholder="Achternaam" required>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="geslacht">Geslacht</label>
-                <select class='form-control <?php echo isset($error['geslacht'][1]) ? 'border-danger' : null; ?>' id='geslacht' name='geslacht' required>
-                    <option <?php echo isset($error['geslacht'][0]) && '1' === $error['geslacht'][0] ? 'selected' : null; ?> value='1'>
+                <select class='form-control <?= isset($error['geslacht'][1]) ? 'border-danger' : null ?>' id='geslacht' name='geslacht' required>
+                    <option <?= isset($error['geslacht'][0]) && '1' === $error['geslacht'][0] ? 'selected' : null ?> value='1'>
                         Man
                     </option>
-                    <option <?php echo isset($error['geslacht'][0]) && '2' === $error['geslacht'][0] ? 'selected' : null; ?> value='2'>
+                    <option <?= isset($error['geslacht'][0]) && '2' === $error['geslacht'][0] ? 'selected' : null ?> value='2'>
                         Vrouw
                     </option>
                 </select>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="geboortedatum">Geboortedatum</label>
-                <input type="date" name="geboortedatum" class="form-control <?php echo isset($error['geboortedatum'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['geboortedatum'][0]) ? 'value="' . $error['geboortedatum'][0] . '"' : null; ?> id="geboortedatum" aria-describedby="geboortedatum" placeholder="Geboortedatum" required>
+                <input type="date" name="geboortedatum" class="form-control <?= isset($error['geboortedatum'][1]) ? 'border-danger' : null ?>" <?= isset($error['geboortedatum'][0]) ? 'value="' . $error['geboortedatum'][0] . '"' : null ?> id="geboortedatum" aria-describedby="geboortedatum" placeholder="Geboortedatum" required>
             </div>
             <div class="form-group">
                 <label for="telefoonVast">Telefoon (Vast)</label>
-                <input type="text" name="telefoonVast" class="form-control <?php echo isset($error['telefoonVast'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['telefoonVast'][0]) ? 'value="' . $error['telefoonVast'][0] . '"' : null; ?> id="telefoonVast" aria-describedby="telefoon" placeholder="Telefoonnummer">
+                <input type="text" name="telefoonVast" class="form-control <?= isset($error['telefoonVast'][1]) ? 'border-danger' : null ?>" <?= isset($error['telefoonVast'][0]) ? 'value="' . $error['telefoonVast'][0] . '"' : null ?> id="telefoonVast" aria-describedby="telefoon" placeholder="Telefoonnummer">
             </div>
             <div class="form-group">
                 <label for="telefoonMobiel">Telefoon (Mobiel)</label>
-                <input type="text" name="telefoonMobiel" class="form-control <?php echo isset($error['telefoonMobiel'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['telefoonMobiel'][0]) ? 'value="' . $error['telefoonMobiel'][0] . '"' : null; ?> id="telefoonMobiel" aria-describedby="telefoon" placeholder="Telefoonnummer">
+                <input type="text" name="telefoonMobiel" class="form-control <?= isset($error['telefoonMobiel'][1]) ? 'border-danger' : null ?>" <?= isset($error['telefoonMobiel'][0]) ? 'value="' . $error['telefoonMobiel'][0] . '"' : null ?> id="telefoonMobiel" aria-describedby="telefoon" placeholder="Telefoonnummer">
             </div>
             <div class="form-group">
                 <label class="requiredField" for="emailadres">E-mailadres</label>
-                <input type="email" name="emailadres" class="form-control <?php echo isset($error['emailadres'][1]) || 'GEBRUIKERSACCOUNT_BEZET' === $error['code'] ? 'border-danger' : null; ?>" <?php echo isset($error['emailadres'][0]) ? 'value="' . $error['emailadres'][0] . '"' : null; ?> id="emailadres" aria-describedby="emailadres" placeholder="Emailadres" required>
+                <input type="email" name="emailadres" class="form-control <?= isset($error['emailadres'][1]) || 'GEBRUIKERSACCOUNT_BEZET' === $error['code'] ? 'border-danger' : null ?>" <?= isset($error['emailadres'][0]) ? 'value="' . $error['emailadres'][0] . '"' : null ?> id="emailadres" aria-describedby="emailadres" placeholder="Emailadres" required>
             </div>
             <div class="form-group">
-                <?php echo $error['house'][0] ?? null; ?>
+                <?= $error['house'][0] ?? null ?>
                 <label class="requiredField" for="name">Woont uw kind op een andere locatie dan u?</label>
                 <br>
-                <input type="radio" name="house" class="<?php echo isset($error['house'][1]) ? 'border-danger' : null; ?>" value="true" id="ja" onclick="javascript:addAdress(true);" <?php echo isset($error['house'][0]) && 'true' === $error['house'][0] ? 'checked' : null; ?> required>
+                <input type="radio" name="house" class="<?= isset($error['house'][1]) ? 'border-danger' : null ?>" value="true" id="ja" onclick="javascript:addAdress(true);" <?= isset($error['house'][0]) && 'true' === $error['house'][0] ? 'checked' : null ?> required>
                 <label for="ja">Ja</label>
-                <input type="radio" name="house" class="<?php echo isset($error['house'][1]) ? 'border-danger' : null; ?>" value="false" id="nee" onclick="javascript:addAdress(false);" <?php echo isset($error['house'][0]) && 'false' === $error['house'][0] ? 'checked' : null; ?>>
+                <input type="radio" name="house" class="<?= isset($error['house'][1]) ? 'border-danger' : null ?>" value="false" id="nee" onclick="javascript:addAdress(false);" <?= isset($error['house'][0]) && 'false' === $error['house'][0] ? 'checked' : null ?>>
                 <label for="nee">Nee</label>
             </div>
             <div id="showAlternateAdress">
@@ -291,23 +291,23 @@ class Authentication
                     e.innerHTML = `<div>
                         <div class="form-group">
                             <label class="requiredField" for="postcode">Postcode</label>
-                            <input type="text" name="postcode" id="zipcode" class="form-control <?php echo isset($error['postcode'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['postcode'][0]) ? 'value="' . $error['postcode'][0] . '"' : null; ?> id="postcode" aria-describedby="postcode" placeholder="Postcode" required>
+                            <input type="text" name="postcode" id="zipcode" class="form-control <?= isset($error['postcode'][1]) ? 'border-danger' : null ?>" <?= isset($error['postcode'][0]) ? 'value="' . $error['postcode'][0] . '"' : null ?> id="postcode" aria-describedby="postcode" placeholder="Postcode" required>
                         </div>
                         <div class="form-group">
                             <label class="requiredField" for="nummer">Huisnummer</label>
-                            <input type="text" name="nummer" id="housenumber" class="form-control <?php echo isset($error['nummer'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['nummer'][0]) ? 'value="' . $error['nummer'][0] . '"' : null; ?> id="nummer" aria-describedby="nummer" placeholder="Huisnummer" required>
+                            <input type="text" name="nummer" id="housenumber" class="form-control <?= isset($error['nummer'][1]) ? 'border-danger' : null ?>" <?= isset($error['nummer'][0]) ? 'value="' . $error['nummer'][0] . '"' : null ?> id="nummer" aria-describedby="nummer" placeholder="Huisnummer" required>
                         </div>
                         <div class="form-group">
                             <label for="toevoeging">Toevoeging</label>
-                            <input type="text" name="toevoeging" class="form-control <?php echo isset($error['toevoeging'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['toevoeging'][0]) ? 'value="' . $error['toevoeging'][0] . '"' : null; ?> id="toevoeging" aria-describedby="toevoeging" placeholder="Toevoeging">
+                            <input type="text" name="toevoeging" class="form-control <?= isset($error['toevoeging'][1]) ? 'border-danger' : null ?>" <?= isset($error['toevoeging'][0]) ? 'value="' . $error['toevoeging'][0] . '"' : null ?> id="toevoeging" aria-describedby="toevoeging" placeholder="Toevoeging">
                         </div>
                         <div class="form-group">
                             <label class="requiredField" for="straat">Straat</label>
-                            <input type="text" name="straat" id="street" class="form-control <?php echo isset($error['straat'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['straat'][0]) ? 'value="' . $error['straat'][0] . '"' : null; ?> id="straat" aria-describedby="straat" placeholder="Straatnaam" required disabled>
+                            <input type="text" name="straat" id="street" class="form-control <?= isset($error['straat'][1]) ? 'border-danger' : null ?>" <?= isset($error['straat'][0]) ? 'value="' . $error['straat'][0] . '"' : null ?> id="straat" aria-describedby="straat" placeholder="Straatnaam" required disabled>
                         </div>
                         <div class="form-group">
                             <label class="requiredField" for="plaats">Plaats</label>
-                            <input type="text" name="plaats" id="place" class="form-control <?php echo isset($error['plaats'][1]) ? 'border-danger' : null; ?>" <?php echo isset($error['plaats'][0]) ? 'value="' . $error['plaats'][0] . '"' : null; ?> id="plaats" aria-describedby="plaats" placeholder="Plaats" required disabled>
+                            <input type="text" name="plaats" id="place" class="form-control <?= isset($error['plaats'][1]) ? 'border-danger' : null ?>" <?= isset($error['plaats'][0]) ? 'value="' . $error['plaats'][0] . '"' : null ?> id="plaats" aria-describedby="plaats" placeholder="Plaats" required disabled>
                         </div>
                     </div>`;
                 } else {
@@ -327,8 +327,8 @@ class Authentication
         ob_start();
         ?>
         <div class="inline-button-container">
-            <a class="inline-button sb-filter-button-text" href="<?php echo $link; ?>">Nee</a>
-            <a class="inline-button sb-filter-button-text" href="<?php echo home_url($wp) . '/kind-registreren/'; ?>">Ja</a>
+            <a class="inline-button sb-filter-button-text" href="<?= $link ?>">Nee</a>
+            <a class="inline-button sb-filter-button-text" href="<?= home_url($wp) . '/kind-registreren/' ?>">Ja</a>
         </div>
         <?php
         return ob_get_clean();
@@ -349,69 +349,69 @@ class Authentication
         <div class="container">
             <h3 class="sb-color-orange">Mijn profiel</h3>
             <div class="inline-button-container">
-                <a href="<?php echo home_url($wp) . '/account-bijwerken/'; ?>" class="btn btn-orange sb-align-bottom" style="margin-right: 10px;">
+                <a href="<?= home_url($wp) . '/account-bijwerken/' ?>" class="btn btn-orange sb-align-bottom" style="margin-right: 10px;">
                     Profiel bijwerken
                 </a>
-                <a href="<?php echo home_url($wp) . '/kinderen-account/'; ?>" class="btn btn-orange sb-align-bottom">
+                <a href="<?= home_url($wp) . '/kinderen-account/' ?>" class="btn btn-orange sb-align-bottom">
                     Mijn kinderen
                 </a>
             </div>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">E-mailadres</strong>
-            <input class="form-control" value="<?php echo $user->gebruikersnaam; ?>" disabled/>
+            <input class="form-control" value="<?= $user->gebruikersnaam ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Roepnaam</strong>
-            <input class="form-control" value="<?php echo $user->roepnaam; ?>" disabled/>
+            <input class="form-control" value="<?= $user->roepnaam ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Volledige naam</strong>
-            <input class="form-control" value="<?php echo $user->voorletters . (isset($user->tussenvoegsel) && '' !== $user->tussenvoegsel ? ' ' . $user->tussenvoegsel . ' ' : ' ') . $user->achternaam; ?>" disabled/>
+            <input class="form-control" value="<?= $user->voorletters . (isset($user->tussenvoegsel) && '' !== $user->tussenvoegsel ? ' ' . $user->tussenvoegsel . ' ' : ' ') . $user->achternaam ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Geslacht</strong>
-            <input class="form-control" value="<?php echo 1 === $user->geslacht ? 'Man' : 'Vrouw'; ?>" disabled/>
+            <input class="form-control" value="<?= 1 === $user->geslacht ? 'Man' : 'Vrouw' ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Geboortedatum</strong>
-            <input class="form-control" value="<?php echo $user->geboortedatum; ?>" disabled/>
+            <input class="form-control" value="<?= $user->geboortedatum ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Telefoon (Vast)</strong>
-            <input class="form-control" value="<?php echo $user->telefoonVast; ?>" disabled/>
+            <input class="form-control" value="<?= $user->telefoonVast ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Telefoon (Mobiel)</strong>
-            <input class="form-control" value="<?php echo $user->telefoonMobiel; ?>" disabled/>
+            <input class="form-control" value="<?= $user->telefoonMobiel ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">IBAN-Rekeningnummer</strong>
-            <input class="form-control" value="<?php echo $user->iban; ?>" disabled/>
+            <input class="form-control" value="<?= $user->iban ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Auto incasso</strong>
-            <input class="form-control" value="<?php echo 0 === $user->autoincasso ? 'Nee' : 'Ja'; ?>" disabled/>
+            <input class="form-control" value="<?= 0 === $user->autoincasso ? 'Nee' : 'Ja' ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Postcode</strong>
-            <input class="form-control" value="<?php echo $user->postcode; ?>" disabled/>
+            <input class="form-control" value="<?= $user->postcode ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Huisnummer</strong>
-            <input class="form-control" value="<?php echo $user->nummer; ?>" disabled/>
+            <input class="form-control" value="<?= $user->nummer ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Toevoeging</strong>
-            <input class="form-control" value="<?php echo $user->toevoeging; ?>" disabled/>
+            <input class="form-control" value="<?= $user->toevoeging ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Plaats</strong>
-            <input class="form-control" value="<?php echo $user->plaats; ?>" disabled/>
+            <input class="form-control" value="<?= $user->plaats ?>" disabled/>
         </div>
         <div class="form-group">
             <strong class="sb-color-orange">Straat</strong>
-            <input class="form-control" value="<?php echo $user->straat; ?>" disabled/>
+            <input class="form-control" value="<?= $user->straat ?>" disabled/>
         </div>
         <?php
         return ob_get_clean();
@@ -459,7 +459,7 @@ class Authentication
         <div class="container">
             <h3 class="sb-color-orange">Mijn profiel bijwerken</h3>
             <div class="inline-button-container">
-                <a href="<?php echo home_url($wp) . '/account/'; ?>" class="btn btn-orange sb-align-bottom" style="margin-right: 10px;">
+                <a href="<?= home_url($wp) . '/account/' ?>" class="btn btn-orange sb-align-bottom" style="margin-right: 10px;">
                     Terug
                 </a>
             </div>
@@ -467,81 +467,81 @@ class Authentication
         <form method="post" enctype="multipart/form-data" id="registerForm">
             <div class="form-group">
                 <label class="requiredField" for="emailadres"><strong class="sb-color-orange">E-mailadres</strong></label>
-                <input type="email" name="emailadres" class="form-control <?php echo isset($error['emailadres'][1]) ? 'border-danger' : null; ?>" id="emailadres" aria-describedby="emailadres" placeholder="Emailadres" value="<?php echo $error['emailadres'][0] ?? $user->gebruikersnaam; ?>" required/>
+                <input type="email" name="emailadres" class="form-control <?= isset($error['emailadres'][1]) ? 'border-danger' : null ?>" id="emailadres" aria-describedby="emailadres" placeholder="Emailadres" value="<?= $error['emailadres'][0] ?? $user->gebruikersnaam ?>" required/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="regicare_roepnaam"><strong class="sb-color-orange">Roepnaam</strong></label>
-                <input type="text" name="regicare_roepnaam" id="regicare_roepnaam" class="form-control <?php echo isset($error['regicare_roepnaam'][1]) ? 'border-danger' : null; ?>" aria-describedby="roepnaam" placeholder="Roepnaam" value="<?php echo $error['regicare_roepnaam'][0] ?? $user->roepnaam; ?>" required/>
+                <input type="text" name="regicare_roepnaam" id="regicare_roepnaam" class="form-control <?= isset($error['regicare_roepnaam'][1]) ? 'border-danger' : null ?>" aria-describedby="roepnaam" placeholder="Roepnaam" value="<?= $error['regicare_roepnaam'][0] ?? $user->roepnaam ?>" required/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="voorletters"><strong class="sb-color-orange">Voorletters</strong></label>
-                <input type="text" name="voorletters" class="form-control <?php echo isset($error['voorletters'][1]) ? 'border-danger' : null; ?>" id="voorletters" aria-describedby="voorletters" placeholder="Voorletters" value="<?php echo $error['voorletters'][0] ?? $user->voorletters; ?>" required/>
+                <input type="text" name="voorletters" class="form-control <?= isset($error['voorletters'][1]) ? 'border-danger' : null ?>" id="voorletters" aria-describedby="voorletters" placeholder="Voorletters" value="<?= $error['voorletters'][0] ?? $user->voorletters ?>" required/>
             </div>
             <div class="form-group">
                 <label for="tussenvoegsel"><strong class="sb-color-orange">Tussenvoegsel</strong></label>
-                <input type="text" name="tussenvoegsel" class="form-control <?php echo isset($error['tussenvoegsel'][1]) ? 'border-danger' : null; ?>" id="tussenvoegsel" aria-describedby="tussenvoegsel" placeholder="Tussenvoegsel" value="<?php echo $error['tussenvoegsel'][0] ?? $user->tussenvoegsel; ?>"/>
+                <input type="text" name="tussenvoegsel" class="form-control <?= isset($error['tussenvoegsel'][1]) ? 'border-danger' : null ?>" id="tussenvoegsel" aria-describedby="tussenvoegsel" placeholder="Tussenvoegsel" value="<?= $error['tussenvoegsel'][0] ?? $user->tussenvoegsel ?>"/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="achternaam"><strong class="sb-color-orange">Achternaam</strong></label>
-                <input type="text" name="achternaam" class="form-control <?php echo isset($error['achternaam'][1]) ? 'border-danger' : null; ?>" id="achternaam" placeholder="Achternaam" aria-describedby="achternaam" value="<?php echo $error['achternaam'][0] ?? $user->achternaam; ?>" required/>
+                <input type="text" name="achternaam" class="form-control <?= isset($error['achternaam'][1]) ? 'border-danger' : null ?>" id="achternaam" placeholder="Achternaam" aria-describedby="achternaam" value="<?= $error['achternaam'][0] ?? $user->achternaam ?>" required/>
             </div>
             <div class="form-group">
                 <label for="geslacht"><strong class="sb-color-orange">Geslacht</strong></label>
-                <select class='form-control <?php echo isset($error['geslacht'][1]) ? 'border-danger' : null; ?>' id='geslacht' name='geslacht' aria-describedby="geslacht" required>
-                    <option <?php echo ($error['geslacht'][0] ?? $user->geslacht) === 1 ? 'selected' : null; ?> value='1'>
+                <select class='form-control <?= isset($error['geslacht'][1]) ? 'border-danger' : null ?>' id='geslacht' name='geslacht' aria-describedby="geslacht" required>
+                    <option <?= ($error['geslacht'][0] ?? $user->geslacht) === 1 ? 'selected' : null ?> value='1'>
                         Man
                     </option>
-                    <option <?php echo ($error['geslacht'][0] ?? $user->geslacht) === 2 ? 'selected' : null; ?> value='2'>
+                    <option <?= ($error['geslacht'][0] ?? $user->geslacht) === 2 ? 'selected' : null ?> value='2'>
                         Vrouw
                     </option>
                 </select>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="geboortedatum"><strong class="sb-color-orange">Geboortedatum</strong></label>
-                <input type="date" name="geboortedatum" class="form-control <?php echo isset($error['geboortedatum'][1]) ? 'border-danger' : null; ?>" id="geboortedatum" placeholder="Geboortedatum" aria-describedby="geboortedatum" value="<?php echo $error['geboortedatum'][0] ?? $user->geboortedatum; ?>" required/>
+                <input type="date" name="geboortedatum" class="form-control <?= isset($error['geboortedatum'][1]) ? 'border-danger' : null ?>" id="geboortedatum" placeholder="Geboortedatum" aria-describedby="geboortedatum" value="<?= $error['geboortedatum'][0] ?? $user->geboortedatum ?>" required/>
             </div>
             <div class="form-group">
                 <label for="telefoonVast"><strong class="sb-color-orange">Telefoon (vast)</strong></label>
-                <input type="text" name="telefoonVast" class="form-control <?php echo isset($error['telefoonVast'][1]) ? 'border-danger' : null; ?>" id="telefoonVast" aria-describedby="telefoon vast" placeholder="Telefoonnummer vast" value="<?php echo $error['telefoonVast'][0] ?? $user->telefoonVast; ?>"/>
+                <input type="text" name="telefoonVast" class="form-control <?= isset($error['telefoonVast'][1]) ? 'border-danger' : null ?>" id="telefoonVast" aria-describedby="telefoon vast" placeholder="Telefoonnummer vast" value="<?= $error['telefoonVast'][0] ?? $user->telefoonVast ?>"/>
             </div>
             <div class="form-group">
                 <label for="telefoonMobiel"><strong class="sb-color-orange">Telefoon (Mobiel)</strong></label>
-                <input type="text" name="telefoonMobiel" class="form-control <?php echo isset($error['telefoonMobiel'][1]) ? 'border-danger' : null; ?>" id="telefoonMobiel" aria-describedby="telefoon mobiel" placeholder="Telefoonnummer mobiel" value="<?php echo $error['telefoonMobiel'][0] ?? $user->telefoonMobiel; ?>"/>
+                <input type="text" name="telefoonMobiel" class="form-control <?= isset($error['telefoonMobiel'][1]) ? 'border-danger' : null ?>" id="telefoonMobiel" aria-describedby="telefoon mobiel" placeholder="Telefoonnummer mobiel" value="<?= $error['telefoonMobiel'][0] ?? $user->telefoonMobiel ?>"/>
             </div>
             <div class="form-group">
                 <strong class="sb-color-orange">IBAN-Rekeningnummer</strong>
-                <input type="text" name="iban" class="form-control <?php echo isset($error['iban'][1]) ? 'border-danger' : null; ?>" id="iban" aria-describedby="iban" placeholder="IBAN-Rekeningnummer" value="<?php echo $error['iban'][0] ?? $user->iban; ?>"/>
+                <input type="text" name="iban" class="form-control <?= isset($error['iban'][1]) ? 'border-danger' : null ?>" id="iban" aria-describedby="iban" placeholder="IBAN-Rekeningnummer" value="<?= $error['iban'][0] ?? $user->iban ?>"/>
             </div>
             <div class="form-group">
                 <label for="autoincasso"><strong class="sb-color-orange">Auto incasso</strong></label>
-                <select class='form-control <?php echo isset($error['autoincasso'][1]) ? 'border-danger' : null; ?>' id='autoincasso' name='autoincasso' aria-describedby="auto incasso">
-                    <option <?php echo ($error['autoincasso'][0] ?? $user->autoincasso) === 1 ? 'selected' : null; ?> value='1'>
+                <select class='form-control <?= isset($error['autoincasso'][1]) ? 'border-danger' : null ?>' id='autoincasso' name='autoincasso' aria-describedby="auto incasso">
+                    <option <?= ($error['autoincasso'][0] ?? $user->autoincasso) === 1 ? 'selected' : null ?> value='1'>
                         Ja
                     </option>
-                    <option <?php echo ($error['autoincasso'][0] ?? $user->autoincasso) === 0 ? 'selected' : null; ?> value='0'>
+                    <option <?= ($error['autoincasso'][0] ?? $user->autoincasso) === 0 ? 'selected' : null ?> value='0'>
                         Nee
                     </option>
                 </select>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="postcode"><strong class="sb-color-orange">Postcode</strong></label>
-                <input type="text" name="postcode" class="form-control <?php echo isset($error['postcode'][1]) ? 'border-danger' : null; ?>" id="zipcode" aria-describedby="postcode" placeholder="Postcode" value="<?php echo $error['postcode'][0] ?? $user->postcode; ?>" required/>
+                <input type="text" name="postcode" class="form-control <?= isset($error['postcode'][1]) ? 'border-danger' : null ?>" id="zipcode" aria-describedby="postcode" placeholder="Postcode" value="<?= $error['postcode'][0] ?? $user->postcode ?>" required/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="nummer"><strong class="sb-color-orange">Huisnummer</strong></label>
-                <input type="text" name="nummer" class="form-control <?php echo isset($error['nummer'][1]) ? 'border-danger' : null; ?>" id="housenumber" aria-describedby="nummer" placeholder="Huisnummer" value="<?php echo $error['nummer'][0] ?? $user->nummer; ?>" required/>
+                <input type="text" name="nummer" class="form-control <?= isset($error['nummer'][1]) ? 'border-danger' : null ?>" id="housenumber" aria-describedby="nummer" placeholder="Huisnummer" value="<?= $error['nummer'][0] ?? $user->nummer ?>" required/>
             </div>
             <div class="form-group">
                 <label for="toevoeging"><strong class="sb-color-orange">Toevoeging</strong></label>
-                <input type="text" name="toevoeging" class="form-control <?php echo isset($error['toevoeging'][1]) ? 'border-danger' : null; ?>" id="toevoeging" aria-describedby="toevoeging" placeholder="Toevoeging" value="<?php echo $error['toevoeging'][0] ?? $user->toevoeging; ?>"/>
+                <input type="text" name="toevoeging" class="form-control <?= isset($error['toevoeging'][1]) ? 'border-danger' : null ?>" id="toevoeging" aria-describedby="toevoeging" placeholder="Toevoeging" value="<?= $error['toevoeging'][0] ?? $user->toevoeging ?>"/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="plaats"><strong class="sb-color-orange">Plaats</strong></label>
-                <input type="text" name="plaats" class="form-control <?php echo isset($error['plaats'][1]) ? 'border-danger' : null; ?>" id="place" aria-describedby="plaats" placeholder="Plaats" value="<?php echo $error['plaats'][0] ?? $user->plaats; ?>" disabled required/>
+                <input type="text" name="plaats" class="form-control <?= isset($error['plaats'][1]) ? 'border-danger' : null ?>" id="place" aria-describedby="plaats" placeholder="Plaats" value="<?= $error['plaats'][0] ?? $user->plaats ?>" disabled required/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="straat"><strong class="sb-color-orange">Straat</strong></label>
-                <input type="text" name="straat" class="form-control <?php echo isset($error['straat'][1]) ? 'border-danger' : null; ?>" id="street" aria-describedby="straat" placeholder="Straatnaam" value="<?php echo $error['straat'][0] ?? $user->straat; ?>" disabled required/>
+                <input type="text" name="straat" class="form-control <?= isset($error['straat'][1]) ? 'border-danger' : null ?>" id="street" aria-describedby="straat" placeholder="Straatnaam" value="<?= $error['straat'][0] ?? $user->straat ?>" disabled required/>
             </div>
             <input type="text" hidden name="form" value="accountUpdate" required>
             <button type="submit" class="sb-filter-button btn-orange sb-filter-button-text float-right sb-registerButton">
@@ -583,7 +583,7 @@ class Authentication
         <div class="container">
             <h3 class="sb-color-orange">Uw kinderen</h3>
             <div class="inline-button-container">
-                <a href="<?php echo home_url($wp) . '/account/'; ?>" class="btn btn-orange sb-align-bottom">
+                <a href="<?= home_url($wp) . '/account/' ?>" class="btn btn-orange sb-align-bottom">
                     Terug
                 </a>
             </div>
@@ -596,60 +596,60 @@ class Authentication
                     <div class="card mb-3 w-100">
                         <div class="card-body">
                             <div class="child-flex-inline">
-                                <h5 class="account-title"><?php echo $child->roepnaam . ('' != $child->tussenvoegsel ? ' ' . $child->tussenvoegsel . ' ' : ' ') . $child->achternaam; ?></h5>
+                                <h5 class="account-title"><?= $child->roepnaam . ('' != $child->tussenvoegsel ? ' ' . $child->tussenvoegsel . ' ' : ' ') . $child->achternaam ?></h5>
                                 <a class="btn btn-orange vertoon">Toon meer</a>
                             </div>
                             <div class="popUpBox" style="display: none">
                                 <div class="form-group">
                                     <strong class="sb-color-orange">E-mailadres</strong>
-                                    <input class="form-control" value="<?php echo $child->emailadres; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->emailadres ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Roepnaam</strong>
-                                    <input class="form-control" value="<?php echo $child->roepnaam; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->roepnaam ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Volledige naam</strong>
-                                    <input class="form-control" value="<?php echo $child->voorletters . (isset($child->tussenvoegsel) && '' !== $child->tussenvoegsel ? ' ' . $child->tussenvoegsel . ' ' : ' ') . $child->achternaam; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->voorletters . (isset($child->tussenvoegsel) && '' !== $child->tussenvoegsel ? ' ' . $child->tussenvoegsel . ' ' : ' ') . $child->achternaam ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Geslacht</strong>
-                                    <input class="form-control" value="<?php echo 1 === $child->geslacht ? 'Man' : 'Vrouw'; ?>" disabled/>
+                                    <input class="form-control" value="<?= 1 === $child->geslacht ? 'Man' : 'Vrouw' ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Geboortedatum</strong>
-                                    <input class="form-control" value="<?php echo $child->geboortedatum; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->geboortedatum ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Telefoon (Vast)</strong>
-                                    <input class="form-control" value="<?php echo $child->telefoonVast; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->telefoonVast ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Telefoon (Mobiel)</strong>
-                                    <input class="form-control" value="<?php echo $child->telefoonMobiel; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->telefoonMobiel ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Postcode</strong>
-                                    <input class="form-control" value="<?php echo $child->postcode; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->postcode ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Huisnummer</strong>
-                                    <input class="form-control" value="<?php echo $child->nummer; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->nummer ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Toevoeging</strong>
-                                    <input class="form-control" value="<?php echo $child->toevoeging; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->toevoeging ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Plaats</strong>
-                                    <input class="form-control" value="<?php echo $child->plaats; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->plaats ?>" disabled/>
                                 </div>
                                 <div class="form-group">
                                     <strong class="sb-color-orange">Straat</strong>
-                                    <input class="form-control" value="<?php echo $child->straat; ?>" disabled/>
+                                    <input class="form-control" value="<?= $child->straat ?>" disabled/>
                                 </div>
                                 <form method="post" enctype="multipart/form-data" id="">
-                                    <input type="text" hidden name="childID" value="<?php echo $child->persoonID; ?>" required>
+                                    <input type="text" hidden name="childID" value="<?= $child->persoonID ?>" required>
                                     <button type="submit" class="sb-filter-button btn-orange sb-filter-button-text float-right sb-registerButton">
                                         Gegeven aanpassen
                                     </button>
@@ -665,13 +665,17 @@ class Authentication
             <div class="container">
                 <b>Wij konden geen kinderen vinden!</b>
                 <p>Wilt u een kind toevoegen
-                    <a class="sb-color-orange" href="<?php echo home_url($wp) . '/kind-registreren/'; ?>">klik dan
+                    <a class="sb-color-orange" href="<?= home_url($wp) . '/kind-registreren/' ?>">klik dan
                                                                                                   hier</a></p>
             </div>
             <?php
         }
     }
 
+    /**
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface
+     *
+     */
     public function account_child_update_short_show(): bool|string
     {
         global $wp;
@@ -722,7 +726,7 @@ class Authentication
         <div class="container">
             <h3 class="sb-color-orange">Mijn kind bijwerken</h3>
             <div class="inline-button-container">
-                <a href="<?php echo home_url($wp) . '/kinderen-account/'; ?>" class="btn btn-orange sb-align-bottom" style="margin-right: 10px;">
+                <a href="<?= home_url($wp) . '/kinderen-account/' ?>" class="btn btn-orange sb-align-bottom" style="margin-right: 10px;">
                     Terug
                 </a>
             </div>
@@ -730,69 +734,69 @@ class Authentication
         <form method="post" enctype="multipart/form-data" id="registerForm">
             <div class="form-group">
                 <label class="requiredField" for="emailadres"><strong class="sb-color-orange">E-mailadres</strong></label>
-                <input type="email" name="emailadres" class="form-control <?php echo isset($error['emailadres'][1]) ? 'border-danger' : null; ?>" id="emailadres" aria-describedby="emailadres" placeholder="Emailadres" value="<?php echo $error['emailadres'][0] ?? $child->emailadres; ?>" required/>
+                <input type="email" name="emailadres" class="form-control <?= isset($error['emailadres'][1]) ? 'border-danger' : null; ?>" id="emailadres" aria-describedby="emailadres" placeholder="Emailadres" value="<?= $error['emailadres'][0] ?? $child->emailadres ?>" required/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="regicare_roepnaam"><strong class="sb-color-orange">Roepnaam</strong></label>
-                <input type="text" name="regicare_roepnaam" id="regicare_roepnaam" class="form-control <?php echo isset($error['regicare_roepnaam'][1]) ? 'border-danger' : null; ?>" aria-describedby="roepnaam" placeholder="Roepnaam" value="<?php echo $error['regicare_roepnaam'][0] ?? $child->roepnaam; ?>" required/>
+                <input type="text" name="regicare_roepnaam" id="regicare_roepnaam" class="form-control <?= isset($error['regicare_roepnaam'][1]) ? 'border-danger' : null ?>" aria-describedby="roepnaam" placeholder="Roepnaam" value="<?= $error['regicare_roepnaam'][0] ?? $child->roepnaam ?>" required/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="voorletters"><strong class="sb-color-orange">Voorletters</strong></label>
-                <input type="text" name="voorletters" class="form-control <?php echo isset($error['voorletters'][1]) ? 'border-danger' : null; ?>" id="voorletters" aria-describedby="voorletters" placeholder="Voorletters" value="<?php echo $error['voorletters'][0] ?? $child->voorletters; ?>" required/>
+                <input type="text" name="voorletters" class="form-control <?= isset($error['voorletters'][1]) ? 'border-danger' : null ?>" id="voorletters" aria-describedby="voorletters" placeholder="Voorletters" value="<?= $error['voorletters'][0] ?? $child->voorletters ?>" required/>
             </div>
             <div class="form-group">
                 <label for="tussenvoegsel"><strong class="sb-color-orange">Tussenvoegsel</strong></label>
-                <input type="text" name="tussenvoegsel" class="form-control <?php echo isset($error['tussenvoegsel'][1]) ? 'border-danger' : null; ?>" id="tussenvoegsel" aria-describedby="tussenvoegsel" placeholder="Tussenvoegsel" value="<?php echo $error['tussenvoegsel'][0] ?? $child->tussenvoegsel; ?>"/>
+                <input type="text" name="tussenvoegsel" class="form-control <?= isset($error['tussenvoegsel'][1]) ? 'border-danger' : null ?>" id="tussenvoegsel" aria-describedby="tussenvoegsel" placeholder="Tussenvoegsel" value="<?= $error['tussenvoegsel'][0] ?? $child->tussenvoegsel ?>"/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="achternaam"><strong class="sb-color-orange">Achternaam</strong></label>
-                <input type="text" name="achternaam" class="form-control <?php echo isset($error['achternaam'][1]) ? 'border-danger' : null; ?>" id="achternaam" placeholder="Achternaam" aria-describedby="achternaam" value="<?php echo $error['achternaam'][0] ?? $child->achternaam; ?>" required/>
+                <input type="text" name="achternaam" class="form-control <?= isset($error['achternaam'][1]) ? 'border-danger' : null ?>" id="achternaam" placeholder="Achternaam" aria-describedby="achternaam" value="<?= $error['achternaam'][0] ?? $child->achternaam ?>" required/>
             </div>
             <div class="form-group">
                 <label for="geslacht"><strong class="sb-color-orange">Geslacht</strong></label>
-                <select class='form-control <?php echo isset($error['geslacht'][1]) ? 'border-danger' : null; ?>' id='geslacht' name='geslacht' aria-describedby="geslacht" required>
-                    <option <?php echo ($error['geslacht'][0] ?? $child->geslacht) === 1 ? 'selected' : null; ?> value='1'>
+                <select class='form-control <?= isset($error['geslacht'][1]) ? 'border-danger' : null ?>' id='geslacht' name='geslacht' aria-describedby="geslacht" required>
+                    <option <?= ($error['geslacht'][0] ?? $child->geslacht) === 1 ? 'selected' : null ?> value='1'>
                         Man
                     </option>
-                    <option <?php echo ($error['geslacht'][0] ?? $child->geslacht) === 2 ? 'selected' : null; ?> value='2'>
+                    <option <?= ($error['geslacht'][0] ?? $child->geslacht) === 2 ? 'selected' : null ?> value='2'>
                         Vrouw
                     </option>
                 </select>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="geboortedatum"><strong class="sb-color-orange">Geboortedatum</strong></label>
-                <input type="date" name="geboortedatum" class="form-control <?php echo isset($error['geboortedatum'][1]) ? 'border-danger' : null; ?>" id="geboortedatum" placeholder="Geboortedatum" aria-describedby="geboortedatum" value="<?php echo $error['geboortedatum'][0] ?? $child->geboortedatum; ?>" required/>
+                <input type="date" name="geboortedatum" class="form-control <?= isset($error['geboortedatum'][1]) ? 'border-danger' : null ?>" id="geboortedatum" placeholder="Geboortedatum" aria-describedby="geboortedatum" value="<?= $error['geboortedatum'][0] ?? $child->geboortedatum ?>" required/>
             </div>
             <div class="form-group">
                 <label for="telefoonVast"><strong class="sb-color-orange">Telefoon (vast)</strong></label>
-                <input type="text" name="telefoonVast" class="form-control <?php echo isset($error['telefoonVast'][1]) ? 'border-danger' : null; ?>" id="telefoonVast" aria-describedby="telefoon vast" placeholder="Telefoonnummer vast" value="<?php echo $error['telefoonVast'][0] ?? $child->telefoonVast; ?>"/>
+                <input type="text" name="telefoonVast" class="form-control <?= isset($error['telefoonVast'][1]) ? 'border-danger' : null ?>" id="telefoonVast" aria-describedby="telefoon vast" placeholder="Telefoonnummer vast" value="<?= $error['telefoonVast'][0] ?? $child->telefoonVast ?>"/>
             </div>
             <div class="form-group">
                 <label for="telefoonMobiel"><strong class="sb-color-orange">Telefoon (Mobiel)</strong></label>
-                <input type="text" name="telefoonMobiel" class="form-control <?php echo isset($error['telefoonMobiel'][1]) ? 'border-danger' : null; ?>" id="telefoonMobiel" aria-describedby="telefoon mobiel" placeholder="Telefoonnummer mobiel" value="<?php echo $error['telefoonMobiel'][0] ?? $child->telefoonMobiel; ?>"/>
+                <input type="text" name="telefoonMobiel" class="form-control <?= isset($error['telefoonMobiel'][1]) ? 'border-danger' : null ?>" id="telefoonMobiel" aria-describedby="telefoon mobiel" placeholder="Telefoonnummer mobiel" value="<?= $error['telefoonMobiel'][0] ?? $child->telefoonMobiel ?>"/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="postcode"><strong class="sb-color-orange">Postcode</strong></label>
-                <input type="text" name="postcode" class="form-control <?php echo isset($error['postcode'][1]) ? 'border-danger' : null; ?>" id="zipcode" aria-describedby="postcode" placeholder="Postcode" value="<?php echo $error['postcode'][0] ?? $child->postcode; ?>" required/>
+                <input type="text" name="postcode" class="form-control <?= isset($error['postcode'][1]) ? 'border-danger' : null ?>" id="zipcode" aria-describedby="postcode" placeholder="Postcode" value="<?= $error['postcode'][0] ?? $child->postcode ?>" required/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="nummer"><strong class="sb-color-orange">Huisnummer</strong></label>
-                <input type="text" name="nummer" class="form-control <?php echo isset($error['nummer'][1]) ? 'border-danger' : null; ?>" id="housenumber" aria-describedby="nummer" placeholder="Huisnummer" value="<?php echo $error['nummer'][0] ?? $child->nummer; ?>" required/>
+                <input type="text" name="nummer" class="form-control <?= isset($error['nummer'][1]) ? 'border-danger' : null ?>" id="housenumber" aria-describedby="nummer" placeholder="Huisnummer" value="<?= $error['nummer'][0] ?? $child->nummer ?>" required/>
             </div>
             <div class="form-group">
                 <label for="toevoeging"><strong class="sb-color-orange">Toevoeging</strong></label>
-                <input type="text" name="toevoeging" class="form-control <?php echo isset($error['toevoeging'][1]) ? 'border-danger' : null; ?>" id="toevoeging" aria-describedby="toevoeging" placeholder="Toevoeging" value="<?php echo $error['toevoeging'][0] ?? $child->toevoeging; ?>"/>
+                <input type="text" name="toevoeging" class="form-control <?= isset($error['toevoeging'][1]) ? 'border-danger' : null ?>" id="toevoeging" aria-describedby="toevoeging" placeholder="Toevoeging" value="<?= $error['toevoeging'][0] ?? $child->toevoeging ?>"/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="plaats"><strong class="sb-color-orange">Plaats</strong></label>
-                <input type="text" name="plaats" class="form-control <?php echo isset($error['plaats'][1]) ? 'border-danger' : null; ?>" id="place" aria-describedby="plaats" placeholder="Plaats" value="<?php echo $error['plaats'][0] ?? $child->plaats; ?>" disabled required/>
+                <input type="text" name="plaats" class="form-control <?= isset($error['plaats'][1]) ? 'border-danger' : null ?>" id="place" aria-describedby="plaats" placeholder="Plaats" value="<?= $error['plaats'][0] ?? $child->plaats ?>" disabled required/>
             </div>
             <div class="form-group">
                 <label class="requiredField" for="straat"><strong class="sb-color-orange">Straat</strong></label>
-                <input type="text" name="straat" class="form-control <?php echo isset($error['straat'][1]) ? 'border-danger' : null; ?>" id="street" aria-describedby="straat" placeholder="Straatnaam" value="<?php echo $error['straat'][0] ?? $child->straat; ?>" disabled required/>
+                <input type="text" name="straat" class="form-control <?= isset($error['straat'][1]) ? 'border-danger' : null ?>" id="street" aria-describedby="straat" placeholder="Straatnaam" value="<?= $error['straat'][0] ?? $child->straat ?>" disabled required/>
             </div>
             <input type="text" hidden name="form" value="accountChildUpdate" required>
-            <input type="text" hidden name="childID" value="<?php echo $childID; ?>" required>
+            <input type="text" hidden name="childID" value="<?= $childID ?>" required>
             <button type="submit" class="sb-filter-button btn-orange sb-filter-button-text float-right sb-registerButton">
                 Profiel bijwerken
             </button>
