@@ -111,8 +111,7 @@ function outputActivityResultHTML(array $activities): void
                                             </td>
                                             <td>
                                                 <?php
-                                                if (null !== $activity->interval && null !== $activity->dag && null !== $activity->startDatum && null !== $activity->eindDatum)
-                                                {
+                                                if (null !== $activity->interval && null !== $activity->dag && null !== $activity->startDatum && null !== $activity->eindDatum) {
                                                     $interval = array_values(get_object_vars($activity->interval));
 
                                                     if (is_array($activity->dag)) {
@@ -533,8 +532,8 @@ function regicare_logout(): void
     $auth = service(Auth::class);
     global $wp;
 
-    $link   = home_url($wp);
-    if (!isset($_REQUEST['logout'])) {
+    $link = home_url($wp);
+    if (! isset($_REQUEST['logout'])) {
         return;
     }
 
@@ -543,7 +542,7 @@ function regicare_logout(): void
     if ('true' == $logout) {
         $oldLink                  = home_url($wp) . $_SERVER['REQUEST_URI'];
         $_SESSION['redirect_url'] = $oldLink;
-        $redirect           = $auth->logout();
+        $redirect                 = $auth->logout();
 
         if (! is_string($redirect)) {
             unset($_SESSION['redirect_url'], $_SESSION['user']);

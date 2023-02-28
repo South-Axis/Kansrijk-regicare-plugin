@@ -95,7 +95,7 @@ class Activiteiten extends RegiCare
             'apiKey'   => $this->getConfig()->getToken(),
             'filter'   => $filter,
         ]));
-        $res = json_decode($return->getBody()->getContents());
+        $res    = json_decode($return->getBody()->getContents());
         if (isset($res->result->error)) {
             return $res->result->error;
         }
@@ -116,7 +116,7 @@ class Activiteiten extends RegiCare
             'bijeenkomstID' => $bijeenkomstID,
             'apiKey'        => $this->getConfig()->getToken(),
         ]));
-        $result = json_decode($response->getBody()->getContents());
+        $result   = json_decode($response->getBody()->getContents());
         if (isset($result->result->error)) {
             return $result->result->error;
         }
@@ -137,7 +137,7 @@ class Activiteiten extends RegiCare
             'filter' => $filter,
             'apiKey' => $this->getConfig()->getToken(),
         ]));
-        $result = json_decode($response->getBody()->getContents());
+        $result   = json_decode($response->getBody()->getContents());
         if (isset($result->result->error)) {
             return $result->result->error;
         }
@@ -156,7 +156,7 @@ class Activiteiten extends RegiCare
             'filter' => $filter,
             'apiKey' => $this->getConfig()->getToken(),
         ]));
-        $result = json_decode($response->getBody()->getContents());
+        $result   = json_decode($response->getBody()->getContents());
         if (isset($result->result->error)) {
             return $result->result->error;
         }
@@ -177,7 +177,7 @@ class Activiteiten extends RegiCare
             'locatieID' => $locatieID,
             'apiKey'    => $this->getConfig()->getToken(),
         ]));
-        $result = json_decode($response->getBody()->getContents());
+        $result   = json_decode($response->getBody()->getContents());
         if (isset($result->result->error)) {
             return $result->result->error;
         }
@@ -196,7 +196,7 @@ class Activiteiten extends RegiCare
             'filter' => $filter,
             'apiKey' => $this->getConfig()->getToken(),
         ]));
-        $result = json_decode($response->getBody()->getContents());
+        $result   = json_decode($response->getBody()->getContents());
         if (isset($result->result->error)) {
             return $result->result->error;
         }
@@ -246,10 +246,8 @@ class Activiteiten extends RegiCare
      *
      * @param mixed $activiteitID
      */
-    public function registeringOnActivity($activiteitID, mixed $persoonID, string|array $filter = []): string
+    public function registeringOnActivity($activiteitID, int $persoonID, string|array $filter = []): string
     {
-        global $wp;
-
         if (Auth::isLoggedIn()) {
             $return = $this->getClient()->send($this->getClient()->request(1, 'activiteitInschrijvingPlaatsen', [
                 'loginKey'     => $_SESSION['user']['loginKey'],
@@ -259,15 +257,7 @@ class Activiteiten extends RegiCare
                 'filter'       => $filter,
             ]));
 
-            $res = json_decode($return->getBody()->getContents());
-
-            if (isset($res->result->error)) {
-                return $res->result->error;
-            }
-
-            wp_redirect(home_url($wp));
-
-            exit;
+            return json_decode($return->getBody()->getContents());
         }
 
         return 'NIET_INGELOGD';
