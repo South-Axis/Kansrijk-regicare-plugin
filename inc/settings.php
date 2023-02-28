@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 // start the session so that the logged in user can be retrieved
+use Graze\GuzzleHttp\JsonRpc\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Southaxis\RegiCare\Activiteiten;
-use Southaxis\RegiCare\ActivityShow;
 use Southaxis\RegiCare\Auth;
 use function Southaxis\Helpers\mapRegicareFilters;
 use function Southaxis\Helpers\service;
@@ -89,24 +89,20 @@ function outputActivityResultHTML(array $activities): void
             <div class="col-lg-4 d-flex align-items-stretch">
                 <div class="card mb-3 w-100">
                     <div class="card-body">
-                        <h5 class="card-title"> <?php echo $activity->omschrijving; ?></h5>
-                        <p class="card-text activityText"> <?php echo wp_trim_words($activity->omschrijvingUitgebreid, $num_words = 55, $more = null); ?></p>
+                        <h5 class="card-title"> <?= $activity->omschrijving ?></h5>
+                        <p class="card-text activityText">
+                            <?= wp_trim_words($activity->omschrijvingUitgebreid) ?>
+                        </p>
                         <div class="popUpBox" style="display: none">
                             <div class="metaInfoHolder">
-                                <p class="card-text"><?php echo $activity->omschrijvingUitgebreid; ?></p>
+                                <p class="card-text"><?= $activity->omschrijvingUitgebreid ?></p>
                                 <div class="tableHolder">
                                     <table>
                                         <tbody>
                                         <?php if (null !== $activity->trefwoorden) { ?>
                                             <tr>
-                                                <td style="padding-right: 15px">
-                                                    <b>Trefwoorden</b>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    echo $activity->trefwoorden;
-                                                    ?>
-                                                </td>
+                                                <td style="padding-right: 15px"><b>Trefwoorden</b></td>
+                                                <td><?= $activity->trefwoorden ?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -115,12 +111,8 @@ function outputActivityResultHTML(array $activities): void
                                             </td>
                                             <td>
                                                 <?php
-                                                if (
-                                                    null !== $activity->interval
-                                                    && null !== $activity->dag
-                                                    && null !== $activity->startDatum
-                                                    && null !== $activity->eindDatum
-                                                ) {
+                                                if (null !== $activity->interval && null !== $activity->dag && null !== $activity->startDatum && null !== $activity->eindDatum)
+                                                {
                                                     $interval = array_values(get_object_vars($activity->interval));
 
                                                     if (is_array($activity->dag)) {
@@ -130,7 +122,8 @@ function outputActivityResultHTML(array $activities): void
                                                     }
 
                                                     echo array_shift($interval) . ', ' . array_shift($day) . ' ' . date('d F', strtotime($activity->startDatum)) . '<b> T/M </b> ' . date('d F', strtotime($activity->eindDatum));
-                                                } ?>
+                                                }
+                                                ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -250,7 +243,7 @@ function outputActivityResultHTML(array $activities): void
                                             <td>
                                                 <?php
                                                 if (null !== $activity->activiteittype) {
-                                                    echo join(', ', array_values(get_object_vars($activity->activiteittype)));
+                                                    echo implode(', ', array_values(get_object_vars($activity->activiteittype)));
                                                 }
                                                 ?>
                                             </td>
@@ -259,7 +252,7 @@ function outputActivityResultHTML(array $activities): void
                                     </table>
                                 </div>
                                 <?php if (1 === $activity->inschrijven) { ?>
-                                    <a class="btn btn-orange float-right" href="<?php echo home_url($wp); ?>/inschrijven/?activityID=<?php echo $activity->activiteitID; ?>">Inschrijven</a>
+                                    <a class="btn btn-orange float-right" href="<?= home_url($wp); ?>/inschrijven/?activityID=<?= $activity->activiteitID ?>">Inschrijven</a>
                                 <?php } ?>
                             </div>
                         </div>
@@ -512,7 +505,7 @@ function regicare_forgot_password(): void
         global $wp;
         $link = home_url($wp);
 
-        $client = RPCCLient::factory(get_option('regicare_domain'), [
+        $client = Client::factory(get_option('regicare_domain'), [
             'timeout' => 100,
             'verify'  => false,
         ]);
@@ -541,24 +534,26 @@ function regicare_logout(): void
     global $wp;
 
     $link   = home_url($wp);
-    $logout = false;
-
-    if (isset($_REQUEST['logout'])) {
-        $logout = ($_REQUEST['logout']);
+    if (!isset($_REQUEST['logout'])) {
+        return;
     }
+
+    $logout = $_REQUEST['logout'];
 
     if ('true' == $logout) {
         $oldLink                  = home_url($wp) . $_SERVER['REQUEST_URI'];
         $_SESSION['redirect_url'] = $oldLink;
-        $authentication           = $auth->logout();
-        if (is_string($authentication)) {
-            wp_redirect($link);
-        } else {
+        $redirect           = $auth->logout();
+
+        if (! is_string($redirect)) {
             unset($_SESSION['redirect_url'], $_SESSION['user']);
 
             wp_redirect(home_url($wp));
+
+            exit;
         }
 
+        wp_redirect($link);
         exit();
     }
 }
