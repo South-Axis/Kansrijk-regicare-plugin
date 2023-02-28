@@ -75,7 +75,6 @@ function mapRegicareFilters(array $input, array $filters = ['dag', 'groepering',
 {
     return iterator_to_array((function () use ($filters, $input): Generator {
         foreach ($filters as $filterName) {
-            //                yield $filterName => [(string) $input["{$filterName}Text"] => (int)$input["{$filterName}ID"]];
             if (isset($input["{$filterName}ID"], $input["{$filterName}Text"]) && (int)$input["{$filterName}ID"] !== 0) {
                 yield $filterName => [(int)$input["{$filterName}ID"]];
             }
