@@ -11,7 +11,7 @@ abstract class RegiCare
 {
     private RPCCLient $client;
 
-    public function __construct(private Config $config)
+    public function __construct(private readonly Config $config)
     {
         $this->client = RPCCLient::factory(
             $this->getConfig()->getDomain(),
