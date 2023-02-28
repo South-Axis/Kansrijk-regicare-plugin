@@ -6,7 +6,10 @@ namespace Southaxis\RegiCare\Client;
 
 class Config
 {
-    public function __construct(private string $domain, private string $token)
+    public function __construct(
+        private readonly string $domain,
+        private readonly string $token
+    )
     {
     }
 
