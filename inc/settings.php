@@ -569,8 +569,6 @@ function regicare_register_activity(): void
 
     $activity = service(Activiteiten::class);
 
-    $link = home_url($wp->request);
-
     if (! isset($_POST['activityID'])) {
         return;
     }

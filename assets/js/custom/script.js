@@ -92,7 +92,9 @@
           .forEach((element) => {
             console.log(element);
             const tdTitle = element.childNodes[1]
-            const title = tdTitle.childNodes[1].innerText
+            const title = tdTitle.childNodes[1]
+
+            console.log({title, element})
 
             if (title === 'Url') {
               const urlElement = element.childNodes[3]

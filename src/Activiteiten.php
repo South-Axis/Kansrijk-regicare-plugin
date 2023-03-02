@@ -248,19 +248,19 @@ class Activiteiten extends RegiCare
      */
     public function registeringOnActivity($activiteitID, int $persoonID, string|array $filter = []): string
     {
-        if (Auth::isLoggedIn()) {
-            $return = $this->getClient()->send($this->getClient()->request(1, 'activiteitInschrijvingPlaatsen', [
-                'loginKey'     => $_SESSION['user']['loginKey'],
-                'apiKey'       => $this->getConfig()->getToken(),
-                'activiteitID' => $activiteitID,
-                'gegevens'     => ['persoonID' => $persoonID],
-                'filter'       => $filter,
-            ]));
-
-            return json_decode($return->getBody()->getContents());
+        if (! Auth::isLoggedIn()) {
+            return 'NIET_INGELOGD';
         }
 
-        return 'NIET_INGELOGD';
+        $return = $this->getClient()->send($this->getClient()->request(1, 'activiteitInschrijvingPlaatsen', [
+            'loginKey'     => $_SESSION['user']['loginKey'],
+            'apiKey'       => $this->getConfig()->getToken(),
+            'activiteitID' => $activiteitID,
+            'gegevens'     => ['persoonID' => $persoonID],
+            'filter'       => $filter,
+        ]));
+
+        return json_decode($return->getBody()->getContents());
     }
 
     /**
