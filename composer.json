@@ -23,7 +23,9 @@
     ],
     "minimum-stability": "stable",
     "autoload": {
-        "files": ["inc/helpers.php"],
+        "files": [
+            "inc/helpers.php"
+        ],
         "psr-4": {
             "Southaxis\\RegiCare\\": "src/"
         }
@@ -46,6 +48,24 @@
                 "type:wordpress-plugin"
             ]
         }
+    },
+    "archive": {
+        "exclude": [
+            ".idea/",
+            ".phive/",
+            ".var/",
+            "tests/",
+            "tools/",
+            "tools/*",
+            "vendor-bin/",
+            ".editorconfig",
+            ".gitattributes",
+            ".gitignore",
+            ".php-cs-fixer.dist.php",
+            ".phpstorm.meta.php",
+            "phpstan.neon.dist",
+            "phpunit.xml.dist"
+        ]
     },
     "scripts": {
         "phpunit": "tools/phpunit.phar",
